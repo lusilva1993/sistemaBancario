@@ -55,9 +55,10 @@ public class Main {
         while (islogado) {
             System.out.println();
             System.out.println("Escolha uma opção: ");
-            System.out.println("1 - Sacar ");
-            System.out.println("2 - Depositar ");
-            System.out.println("3 - Realizar transferencia ");
+            System.out.println("1 - Saldo ");
+            System.out.println("2 - Sacar ");
+            System.out.println("3 - Depositar ");
+            System.out.println("4 - Realizar transferencia ");
             System.out.println("0 - Finalizar sessão.");
             System.out.print("Realizar operação: ");
             escolha = scan.nextInt();
@@ -66,17 +67,19 @@ public class Main {
             if (escolha == 0) {
                 islogado = false;
                 System.out.println("Deslogou do banco!");
-            } else if (escolha == 1) {
+            } else if(escolha == 1){
+                Conta.saldo(clienteLogado);
+            } else if (escolha == 2) {
                 System.out.println("Digite o valor do saque: ");
                 double retirada = scan.nextDouble();
                 Conta.sacar(clienteLogado, retirada);
 
-            } else if (escolha == 2) {
+            } else if (escolha == 3) {
                 System.out.println("Digite o valor a depositar: ");
                 double deposito = scan.nextDouble();
                 Conta.depositar(clienteLogado, deposito);
 
-            } else {
+            } else if  (escolha == 4) {
                 System.out.println("Informe o numero da conta que deseja realizar a transferencia: ");
                 String contaTransferir = scan.next();
 
@@ -90,14 +93,13 @@ public class Main {
 
                     Conta.transferir(clienteLogado, cliente1, saldoClienteLogado, valorTransferencia);
 
-                } else if (!contaTransferir.equals(clienteLogado.getConta().getNumConta())
+                } else if(!contaTransferir.equals(clienteLogado.getConta().getNumConta())
                         && contaTransferir.equals(cliente2.getConta().getNumConta())) {
 
                     Conta.transferir(clienteLogado, cliente2, saldoClienteLogado, valorTransferencia);
 
-                } else {
-                    System.out.println("Opção inválida!");
-                }
+            }else {
+                System.out.println("Opção inválida!");}
             }
         }
         System.out.println("Encerrou tudo!");

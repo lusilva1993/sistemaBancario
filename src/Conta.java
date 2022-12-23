@@ -10,7 +10,11 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public static void transferir(Cliente clienteLogado, Cliente clienteTransferencia, double saldoClienteLogado, double valorTransferencia) {
+    public static void saldo(Cliente clienteLogado){
+        System.out.println("Saldo da conta: "+ clienteLogado.getConta().getSaldo());
+    }
+    public static void transferir(Cliente clienteLogado, Cliente clienteTransferencia,
+                                  double saldoClienteLogado, double valorTransferencia) {
         if (valorTransferencia > 0 && clienteLogado.getConta().getSaldo() >= valorTransferencia) {
             clienteLogado.getConta().setSaldo(saldoClienteLogado -= valorTransferencia);
             double saldoCli1 = clienteTransferencia.getConta().getSaldo();
@@ -46,7 +50,6 @@ public class Conta {
         }
 
     }
-
 
     public String getNumConta() {
         return numConta;
