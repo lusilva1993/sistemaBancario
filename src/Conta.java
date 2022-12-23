@@ -38,4 +38,16 @@ public class Conta {
 
     }
 
+    public static void depositar(Cliente cliente, double valorDeposito) {
+        if (valorDeposito <= 0) {
+            System.out.println("Valor inválido!");
+        } else {
+            double saldo = cliente.getConta().getSaldo();
+            cliente.getConta().setSaldo(saldo += valorDeposito);
+            System.out.println("Depósito feito");
+            System.out.println("Saldo da conta: " + cliente.getConta().getSaldo());
+        }
+    }
+
+
 }

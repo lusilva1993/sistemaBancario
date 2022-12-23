@@ -57,7 +57,7 @@ public class Main {
             } else if (escolha == 2) {
                 System.out.println("Digite o valor a depositar: ");
                 double deposito = scan.nextDouble();
-
+                Conta.depositar(clienteLogado, deposito);
 
             } else {
                 System.out.println("Informe o numero da conta que deseja realizar a transferencia: ");
