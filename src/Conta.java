@@ -10,28 +10,14 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public String getNumConta() {
-        return numConta;
-    }
+    public static void transferir(Cliente clienteLogado, Cliente clienteTransferencia, double saldoClienteLogado, double valorTransferencia) {
+        if (valorTransferencia > 0 && clienteLogado.getConta().getSaldo() >= valorTransferencia) {
+            clienteLogado.getConta().setSaldo(saldoClienteLogado -= valorTransferencia);
+            double saldoCli1 = clienteTransferencia.getConta().getSaldo();
+            clienteTransferencia.getConta().setSaldo(saldoCli1 += valorTransferencia);
+            System.out.println("Operação de transferência feita com sucesso!");
+            System.out.println("Saldo da conta: " + clienteLogado.getConta().getSaldo());
 
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public static void sacar(Cliente cliente, double valorSaque) {
-        if (cliente.getConta().getSaldo() >= valorSaque) {
-            double saldo = cliente.getConta().getSaldo();
-            cliente.getConta().setSaldo(saldo -= valorSaque);
-            System.out.println("Saque feito!");
-            System.out.println("Saldo da conta: " + cliente.getConta().getSaldo());
         } else {
             System.out.println("Saldo indisponível!");
         }
@@ -49,5 +35,32 @@ public class Conta {
         }
     }
 
+    public static void sacar(Cliente cliente, double valorSaque) {
+        if (cliente.getConta().getSaldo() >= valorSaque) {
+            double saldo = cliente.getConta().getSaldo();
+            cliente.getConta().setSaldo(saldo -= valorSaque);
+            System.out.println("Saque feito!");
+            System.out.println("Saldo da conta: " + cliente.getConta().getSaldo());
+        } else {
+            System.out.println("Saldo indisponível!");
+        }
 
+    }
+
+
+    public String getNumConta() {
+        return numConta;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 }

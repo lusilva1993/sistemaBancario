@@ -1,3 +1,20 @@
+/*
+
+21/12/2022 - POO 1
+
+Sistema Bancário
+- Deposito
+- Sacar
+- Transferir
+
+- Transferir apenas se tiver saldo
+- Sacar apenas se tiver saldo
+
+- Todos os atributos tem que ser privados
+
+Grupo: Luciana Ferreira, Maria Thereza, Guilerme Costa Silva
+ */
+
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +32,7 @@ public class Main {
         Cliente cliente1 = new Cliente (conta1, "Juvenal", "666", "1234");
 
         Conta conta2 = new Conta("6789", "6767", 500.0);
-        Cliente cliente2 = new Cliente (conta1, "Patricia", "111", "2222");
+        Cliente cliente2 = new Cliente (conta2, "Patricia", "111", "2222");
 
         while (!islogado){
             System.out.println("Bem vindo ao Banco PoloTech");
@@ -65,11 +82,24 @@ public class Main {
 
                 System.out.println("Informe o valor: ");
                 double valorTransferencia = scan.nextDouble();
-            }
+                double saldoClienteLogado = clienteLogado.getConta().getSaldo();
 
+
+                if (!contaTransferir.equals(clienteLogado.getConta().getNumConta())
+                        && contaTransferir.equals(cliente1.getConta().getNumConta())) {
+
+                    Conta.transferir(clienteLogado, cliente1, saldoClienteLogado, valorTransferencia);
+
+                } else if (!contaTransferir.equals(clienteLogado.getConta().getNumConta())
+                        && contaTransferir.equals(cliente2.getConta().getNumConta())) {
+
+                    Conta.transferir(clienteLogado, cliente2, saldoClienteLogado, valorTransferencia);
+
+                } else {
+                    System.out.println("Opção inválida!");
+                }
+            }
         }
         System.out.println("Encerrou tudo!");
-
-
     }
 }
