@@ -52,7 +52,7 @@ public class Main {
             } else if (escolha == 1) {
                 System.out.println("Digite o valor do saque: ");
                 double retirada = scan.nextDouble();
-
+                Conta.sacar(clienteLogado, retirada);
 
             } else if (escolha == 2) {
                 System.out.println("Digite o valor a depositar: ");
