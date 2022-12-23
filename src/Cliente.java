@@ -14,29 +14,22 @@ public class Cliente {
     }
 
     public Conta getConta() {
+
         return conta;
     }
 
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
-
     public String getNome() {
+
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getCpf() {
+
         return cpf;
     }
 
     public String getSenha() {
         return senha;
     }
-
-
 
 }

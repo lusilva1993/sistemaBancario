@@ -14,16 +14,8 @@ public class Conta {
         return numConta;
     }
 
-    public void setNumConta(String numConta) {
-        this.numConta = numConta;
-    }
-
     public String getAgencia() {
         return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
     }
 
     public double getSaldo() {
