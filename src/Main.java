@@ -7,40 +7,69 @@ public class Main {
 
         int escolha = 0;
 
+        Cliente clienteLogado = null;
+
+        boolean islogado = false;
+
         Conta conta1 = new Conta("1234", "2323", 165.0);
         Cliente cliente1 = new Cliente (conta1, "Juvenal", "666", "1234");
 
         Conta conta2 = new Conta("6789", "6767", 500.0);
         Cliente cliente2 = new Cliente (conta1, "Patricia", "111", "2222");
 
-        boolean islogado = false;
         while (!islogado){
-            System.out.println("Vamos logar!");
-            System.out.println("Digite o CPF:");
+            System.out.println("Bem vindo ao Banco PoloTech");
+            System.out.println("Para logar digite o CPF:");
             String cpf = scan.nextLine();
             System.out.println("Digite a senha: ");
             String senha = scan.nextLine();
-            if(cliente1.getCpf().equals(cpf) && cliente1.getSenha().equals(senha) ||
-                    cliente2.getCpf().equals(cpf) && cliente2.getSenha().equals(senha)){
+            if (cliente1.getCpf().equals(cpf) && cliente1.getSenha().equals(senha)) {
+                clienteLogado = cliente1;
                 islogado = true;
-            }else{
+            } else if (cliente2.getCpf().equals(cpf) && cliente2.getSenha().equals(senha)) {
+                clienteLogado = cliente2;
+                islogado = true;
+
+            } else {
                 System.out.println("Informações inválidas!");
             }
         }
 
-        while(escolha != 0){
+        while (islogado) {
             System.out.println();
-            System.out.println("Digite o valor da operção desejada");
-            System.out.println("1 - Sacar");
-            System.out.println("2 - Depositar");
-            System.out.println("3 - Consultar saldo");
-            System.out.println("4 - Realizar transferencia");
+            System.out.println("Escolha uma opção: ");
+            System.out.println("1 - Sacar ");
+            System.out.println("2 - Depositar ");
+            System.out.println("3 - Realizar transferencia ");
             System.out.println("0 - Finalizar sessão.");
             System.out.print("Realizar operação: ");
             escolha = scan.nextInt();
             System.out.println();
 
+            if (escolha == 0) {
+                islogado = false;
+                System.out.println("Deslogou do banco!");
+            } else if (escolha == 1) {
+                System.out.println("Digite o valor do saque: ");
+                double retirada = scan.nextDouble();
 
-        System.out.println("Hello world!");
+
+            } else if (escolha == 2) {
+                System.out.println("Digite o valor a depositar: ");
+                double deposito = scan.nextDouble();
+
+
+            } else {
+                System.out.println("Informe o numero da conta que deseja realizar a transferencia: ");
+                String contaTransferir = scan.next();
+
+                System.out.println("Informe o valor: ");
+                double valorTransferencia = scan.nextDouble();
+            }
+
+        }
+        System.out.println("Encerrou tudo!");
+
+
     }
 }
